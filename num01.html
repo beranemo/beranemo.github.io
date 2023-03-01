@@ -1,0 +1,31 @@
+<html>
+    <body>
+        <div id="parent">
+         
+        </div>
+    </body>
+    <script>
+    
+        function getRandomInt(max) {
+	       return Math.floor(Math.random() * max);
+        }
+      
+        var parent = document.getElementById("parent");
+
+        for(var i=0; i< 24; i++){
+            //添加 div
+            var div = document.createElement("h4");
+
+            var multiplier   = getRandomInt(11) + 6;
+            var multiplicand = getRandomInt(11) + 6;
+
+            //設置 div 属性，如 id
+            div.setAttribute("id", "num_"+i);
+
+            div.innerHTML = multiplier+ " x " + multiplicand + " =";
+            parent.appendChild(div);
+            
+        }
+
+    </script>
+</html>
