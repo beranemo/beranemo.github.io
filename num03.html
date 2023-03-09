@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <style>
+           .my_font {
+            font-size: 16px;
+           }
+           </style>
+    </head>
+    <body>
+        <span>花費時間:
+            &emsp;
+            &emsp;
+            &emsp;
+            &emsp;
+            &emsp;
+            &emsp; 
+            &emsp;
+            &emsp;
+            &emsp;
+        </span>
+        
+       
+        <div id="parent">
+         
+        </div>
+        
+        <br>
+
+        <h4>請寫出 1~100 內的質數</h4>
+
+        <br>
+        <br>
+        <br>
+    </body>
+    <script>
+    
+        function getRandomInt(max) {
+	       return Math.floor(Math.random() * max);
+        }
+      
+        var parent = document.getElementById("parent");
+
+        for(var i=11; i< 30; i++){
+            
+            // 添加 div
+            var div = document.createElement("p");
+
+            // 
+            var multiplier   = i;
+
+            // 
+            var multiplicand = i;
+
+            //設置 div 属性，如 id
+            div.setAttribute("id", "num_"+i);
+            div.setAttribute("class", "my_font");
+
+            
+
+            div.innerHTML = multiplier+ " x " + multiplicand + " =";
+            parent.appendChild(div);
+            
+        }
+
+    </script>
+</html>
