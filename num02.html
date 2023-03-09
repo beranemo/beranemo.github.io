@@ -33,8 +33,16 @@
             // 取 6 ~ 9
             var multiplier   = getRandomInt(4) + 6;
 
-            // 取 12 ~ 19
-            var multiplicand = getRandomInt(8) + 12;
+            // 取 12 ~ 29
+            var multiplicand = getRandomInt(18) + 12;
+
+            if(multiplicand == 20){
+                multiplicand = getRandomInt(18) + 12;
+            }
+
+            if(multiplicand == 20){
+                multiplicand = getRandomInt(18) + 12;
+            }
 
             //設置 div 属性，如 id
             div.setAttribute("id", "num_"+i);
