@@ -1,0 +1,206 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Convert Excel to HTML Table using JavaScript</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.min.css" rel="stylesheet"
+        crossorigin="anonymous">
+    <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
+    <link href="https://cdn.datatables.net/1.13.3/css/dataTables.bootstrap5.min.css" rel="stylesheet"
+        crossorigin="anonymous">
+    <style>
+        tr { height: 50px; }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="text-center mt-4 mb-4">許可證清單</h2>
+
+
+        
+            <button type="button" class="btn btn-primary" onclick="click_button_01()">半年內即將到期</button>
+            <button type="button" class="btn btn-success" onclick="click_button_02()">一年內即將到期</button>
+            <button type="button" class="btn btn-info" onClick="window.location.reload();">所有資料</button>
+
+        
+
+
+        <table id="example" width="100%" class="table table-striped"></table>
+
+
+    </div>
+</body>
+
+</html>
+
+<script>
+
+
+
+
+    function myFunction_180() {
+
+        var table = $('#example').DataTable();
+        var today = new Date();
+        var today_year = today.getFullYear();
+
+        var today_month = today.getMonth() + 1;
+        if (today_month < 10) {
+            today_month = "0" + today_month;
+        }
+
+        var today_date = today.getDate();
+        if (today_date < 10) {
+            today_date = "0" + today_date;
+        }
+
+        var today_string = today_year + "-" + today_month + "-" + today_date;
+
+        var indexes = table.rows().indexes().filter(function (value, index) {
+            var day1 = new Date(table.row(value).data()[5]); // 政府資料後端的日期
+            var day2 = new Date(today_string);
+
+            var difference = Math.abs(day1 - day2);
+            days = difference / (1000 * 3600 * 24); // 相差幾天
+
+            if (days < 180) {
+                return true;
+            } else {
+                return false;
+            }
+
+        });
+
+        var rowData = table.rows(indexes).data().toArray();
+        table.clear().draw(); // 清空, 重劃
+
+        table.rows.add(rowData).draw();
+    }
+
+    function myFunction_360() {
+
+
+        var table = $('#example').DataTable();
+
+        var today = new Date();
+        var today_year = today.getFullYear();
+
+        var today_month = today.getMonth() + 1;
+        if (today_month < 10) {
+            today_month = "0" + today_month;
+        }
+
+        var today_date = today.getDate();
+        if (today_date < 10) {
+            today_date = "0" + today_date;
+        }
+
+        var today_string = today_year + "-" + today_month + "-" + today_date;
+        var indexes = table.rows().indexes().filter(function (value, index) {
+            var day1 = new Date(table.row(value).data()[5]); // 政府資料後端的日期
+            var day2 = new Date(today_string);
+
+            var difference = Math.abs(day1 - day2);
+            days = difference / (1000 * 3600 * 24); // 相差幾天
+
+            if (days < 360) {
+                return true;
+            } else {
+                return false;
+            }
+
+        });
+
+        var rowData = table.rows(indexes).data().toArray();
+        table.clear().draw(); // 清空, 重劃
+        table.rows.add(rowData).draw();
+    }
+
+
+
+    function click_button_01() {
+        $('#example').DataTable().ajax.reload(function () {
+            myFunction_180();
+        });
+    }
+
+    function click_button_02() {
+        $('#example').DataTable().ajax.reload(function () {
+            myFunction_360();
+        });
+    }
+
+
+    /**
+    $(document).ready(function () {
+        $('#example').DataTable({
+    
+            ajax: '../assets/data/array.txt',
+            paging: false,
+            columns: [
+                    { title: '許可證字號', width: "200px" },
+                    { title: '藥品名稱' },
+                    { title: '劑型與類別', width: "150px" },
+                    { title: '適應症及效能.' },
+                    { title: '有效期限', width: "200px" },
+                    
+            ],
+            
+        });
+    
+        
+    });
+    **/
+
+    function init() {
+
+        var t = $('#example').DataTable({
+            ajax: '../assets/data/array.txt',
+            paging: false,
+            columns: [
+                { title: '序號', width: "20px" },
+                { title: '許可證字號', width: "200px" },
+                { title: '藥品名稱' },
+                { title: '劑型與類別', width: "150px" },
+                { title: '適應症及效能', visible: false },
+                { title: '有效期限', width: "100px" },
+
+            ],
+            columnDefs: [
+                {
+                    searchable: false,
+                    orderable: false,
+                    targets: 0,
+                },
+            ],
+            order: [[1, 'asc']],
+        });
+
+
+        t.on('order.dt search.dt', function () {
+            let i = 1;
+
+            t.cells(null, 0, { search: 'applied', order: 'applied' }).every(function (cell) {
+                this.data(i++);
+            });
+        }).draw();
+
+    }
+
+    $(document).ready(function () {
+        init();
+    });
+
+
+
+
+
+</script>
