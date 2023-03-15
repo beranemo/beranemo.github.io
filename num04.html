@@ -1,0 +1,78 @@
+<html>
+
+<head>
+    <style>
+        .my_font {
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <span>
+        &emsp;
+        &emsp;
+        &emsp;
+        &emsp;
+        &emsp;
+        &emsp;
+        &emsp;
+        &emsp;
+        &emsp;
+    </span>
+
+
+    <div id="parent">
+
+    </div>
+
+    <br>
+
+    <h4>請寫出 1~100 內的質數</h4>
+
+    <br>
+    <br>
+    <br>
+</body>
+<script>
+
+    // max代入4, 值為 0, 1, 2, 3
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+    }
+
+
+
+    var parent = document.getElementById("parent");
+
+    var arr = [];
+
+    for (var i = 11; i < 35; i++) {
+        arr.push(i);
+    }
+
+    arr.sort(function () {//隨機打亂這個陣列
+        return Math.random() - 0.5;
+    })
+
+    //console.log(arr);
+
+    for (let k = 0; k < arr.length; k++) {
+
+        var div = document.createElement("p");
+        var multiplier = arr[k];
+        var multiplicand = arr[k];
+
+        //設置 div 属性，如 id
+        div.setAttribute("id", "num_" + k);
+        div.setAttribute("class", "my_font");
+
+        div.innerHTML = multiplier + " x " + multiplicand + " =";
+        parent.appendChild(div);
+
+
+    }
+
+</script>
+
+</html>

@@ -47,7 +47,11 @@
             //設置 div 属性，如 id
             div.setAttribute("id", "num_"+i);
 
-            div.innerHTML = multiplier+ " x " + multiplicand + " =";
+            if( getRandomInt(4)< 2){
+                div.innerHTML = multiplier+ " x " + multiplicand + " =";
+            }else{
+                div.innerHTML =   multiplicand+ " x " + multiplier + " =";
+            }
             parent.appendChild(div);
             
         }
