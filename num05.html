@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <style>
+           .my_font {
+            font-size: 16px;
+           }
+           </style>
+    </head>
+    <body>
+        <h4>平方表</h4>
+        
+        
+       
+        <div id="parent">
+         
+        </div>
+        
+        <br>
+
+
+        <br>
+        <br>
+        <br>
+    </body>
+    <script>
+    
+        function getRandomInt(max) {
+	       return Math.floor(Math.random() * max);
+        }
+      
+        var parent = document.getElementById("parent");
+
+        for(var i=11; i< 100; i++){
+            
+            // 添加 div
+            var div = document.createElement("p");
+
+            // 
+            var multiplier   = i;
+
+            // 
+            var multiplicand = i;
+
+            //設置 div 属性，如 id
+            div.setAttribute("id", "num_"+i);
+            div.setAttribute("class", "my_font");
+
+            var answer = i*i;
+
+            div.innerHTML = multiplier+ " x " + multiplicand + " = " + answer;
+            parent.appendChild(div);
+            
+        }
+
+    </script>
+</html>
