@@ -36,7 +36,7 @@
           <button @click="click_3" style="display: block; width: 100%; text-align: left" >{{ game.answers[3] }}</button>
           <br />
           <span v-if="game.now_correct==0">答案</span>
-          <span v-else-if="game.now_correct==1">正確</span>
+          <span v-else-if="game.now_correct==1" style="color:green;">正確</span>
           <span v-else>Oh no 😢</span>
          
         </div>`,
