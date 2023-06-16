@@ -1,0 +1,132 @@
+<html>
+
+<head>
+  <title>Organic solvents</title>
+</head>
+
+<body>
+  <div id="app">
+
+    <game-card 
+    v-for="game in games" 
+    :game-data="game" 
+    :key="game.id"
+    ></game-card>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script>
+
+    Vue.component('game-card', {
+        props: ['gameData'],
+        data() {
+          return {
+            game: {...this.gameData}
+          }
+        },
+        template: `
+        <div style="border-radius: .25rem; border: 1px solid #ECECEC; width: 400px; margin: 1rem; padding: 1rem;">
+          <h3>{{ game.question }}</h3>
+          
+          <button @click="click_0" style="display: block; width: 100%; text-align: left" >{{ game.answers[0] }}</button>
+          <button @click="click_1" style="display: block; width: 100%; text-align: left" >{{ game.answers[1] }}</button>
+          <button @click="click_2" style="display: block; width: 100%; text-align: left" >{{ game.answers[2] }}</button>
+          <button @click="click_3" style="display: block; width: 100%; text-align: left" >{{ game.answers[3] }}</button>
+          <br />
+          <span v-if="game.now_correct==0">答案</span>
+          <span v-else-if="game.now_correct==1">正確</span>
+          <span v-else>Oh no 😢</span>
+         
+        </div>`,
+        methods: {
+          click_0() {
+            this.game.now_correct = 0;
+            if(this.game.answers[0]==this.game.correct_answer){
+                this.game.now_correct = 1;
+            }else{
+                this.game.now_correct = 2;
+            }
+          },
+          click_1() {
+            this.game.now_correct = 0;
+            if(this.game.answers[1]==this.game.correct_answer){
+                this.game.now_correct = 1;
+            }else{
+                this.game.now_correct = 2;
+            }
+          },
+          click_2() {
+            this.game.now_correct = 0;
+            if(this.game.answers[2]==this.game.correct_answer){
+                this.game.now_correct = 1;
+                console.log("correct");
+            }else{
+                this.game.now_correct = 2;
+            }
+          },
+          click_3() {
+            this.game.now_correct = false;
+            if(this.game.answers[3]==this.game.correct_answer){
+                this.game.now_correct = 1;
+            }else{
+                this.game.now_correct = 2;
+            }
+          },
+          
+        },
+       
+
+      });
+
+    const app = new Vue({
+      el: '#app',
+      data: {
+        games: [
+          { 
+            id: 1, 
+            question: '依職業安全衛生管理辦法規定,醫療保健服務業勞工人數多少人以上者,應設職業安全衛生管理單位?',
+            answers: [
+                '50',
+                '100',
+                '300',
+                '500'
+            ],
+            correct_answer: '300',
+            now_correct: false,
+        },
+          { 
+            id: 2, 
+            question: 'In "Hexadecimal", what color would be displayed from the color code? #00FF00?',
+            answers: [
+                'Red',
+                'Green',
+                'Blue',
+                'Yellow'
+            ],
+            correct_answer: 'Blue',
+            now_correct: false,
+        },
+          { 
+            id: 3, 
+            question: 'In "Hexadecimal", what color would be displayed from the color code? #00FF00?',
+            answers: [
+                'Red',
+                'Green',
+                'Blue',
+                'Yellow'
+            ],
+            correct_answer: 'Blue',
+            now_correct: false,
+        }       
+        ],
+       
+      },
+      
+      
+    });
+  </script>
+</body>
+
+</html>
