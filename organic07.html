@@ -37,7 +37,7 @@
           <br />
           <span v-if="game.now_correct==0">答案</span>
           <span v-else-if="game.now_correct==1" style="color:green;">正確</span>
-          <span v-else>Oh no 😢</span>
+          <span v-else>Oh no 😢. 正確答案是:  {{ game.correct_answer }}</span>
          
         </div>`,
         methods: {
