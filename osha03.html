@@ -1,0 +1,492 @@
+<html>
+
+<head>
+  <title>OSHA 3</title>
+</head>
+
+<body>
+  <div id="app">
+
+    <game-card 
+    v-for="game in games" 
+    :game-data="game" 
+    :key="game.id"
+    ></game-card>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script>
+
+    Vue.component('game-card', {
+        props: ['gameData'],
+        data() {
+          return {
+            game: {...this.gameData}
+          }
+        },
+        template: `
+        <div style="border-radius: .25rem; border: 1px solid #ECECEC; width: 400px; margin: 1rem; padding: 1rem;">
+          <h3>{{ game.question }}</h3>
+          
+          <button @click="click_0" style="display: block; width: 100%; text-align: left" >{{ game.answers[0] }}</button>
+          <button @click="click_1" style="display: block; width: 100%; text-align: left" >{{ game.answers[1] }}</button>
+          <button @click="click_2" style="display: block; width: 100%; text-align: left" >{{ game.answers[2] }}</button>
+          <button @click="click_3" style="display: block; width: 100%; text-align: left" >{{ game.answers[3] }}</button>
+          <br />
+          <span v-if="game.now_correct==0">答案</span>
+          <span v-else-if="game.now_correct==1" style="color:green;">正確</span>
+          <span v-else>Oh no 😢. 正確答案是:  {{ game.correct_answer }}</span>
+         
+        </div>`,
+        methods: {
+          click_0() {
+            this.game.now_correct = 0;
+            if(this.game.answers[0]==this.game.correct_answer){
+                this.game.now_correct = 1;
+            }else{
+                this.game.now_correct = 2;
+            }
+          },
+          click_1() {
+            this.game.now_correct = 0;
+            if(this.game.answers[1]==this.game.correct_answer){
+                this.game.now_correct = 1;
+            }else{
+                this.game.now_correct = 2;
+            }
+          },
+          click_2() {
+            this.game.now_correct = 0;
+            if(this.game.answers[2]==this.game.correct_answer){
+                this.game.now_correct = 1;
+                console.log("correct");
+            }else{
+                this.game.now_correct = 2;
+            }
+          },
+          click_3() {
+            this.game.now_correct = false;
+            if(this.game.answers[3]==this.game.correct_answer){
+                this.game.now_correct = 1;
+            }else{
+                this.game.now_correct = 2;
+            }
+          },
+          
+        },
+       
+
+      });
+
+    const app = new Vue({
+      el: '#app',
+      data: {
+        games: [
+          { 
+            id: 1, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+        },
+          { 
+            id: 2, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+        },
+          { 
+            id: 3, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          }, 
+          { 
+            id: 4, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 5, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 6, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 7, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 8, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 9, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 10, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 11, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 12, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 13, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 14, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 15, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 16, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 17, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 18, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 19, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 20, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 21, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 22, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 23, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 24, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 25, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 26, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 27, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 28, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 29, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 30, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 31, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 32, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+          { 
+            id: 33, 
+            question: '',
+            answers: [
+                '',
+                '',
+                '',
+                ''
+            ],
+            correct_answer: '',
+            now_correct: false,
+          },
+        ],
+       
+      },
+      
+      
+    });
+  </script>
+</body>
+
+</html>
