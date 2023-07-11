@@ -1,30 +1,26 @@
 <html>
+  <head>
+    <title>OSHA 2</title>
+  </head>
 
-<head>
-  <title>OSHA 2</title>
-</head>
+  <body>
+    <div id="app">
+      <game-card
+        v-for="game in games"
+        :game-data="game"
+        :key="game.id"
+      ></game-card>
+    </div>
 
-<body>
-  <div id="app">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-    <game-card 
-    v-for="game in games" 
-    :game-data="game" 
-    :key="game.id"
-    ></game-card>
-
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
-  <script>
-
-    Vue.component('game-card', {
-        props: ['gameData'],
+    <script>
+      Vue.component("game-card", {
+        props: ["gameData"],
         data() {
           return {
-            game: {...this.gameData}
-          }
+            game: { ...this.gameData },
+          };
         },
         template: `
         <div style="border-radius: .25rem; border: 1px solid #ECECEC; width: 400px; margin: 1rem; padding: 1rem;">
@@ -43,450 +39,294 @@
         methods: {
           click_0() {
             this.game.now_correct = 0;
-            if(this.game.answers[0]==this.game.correct_answer){
-                this.game.now_correct = 1;
-            }else{
-                this.game.now_correct = 2;
+            if (this.game.answers[0] == this.game.correct_answer) {
+              this.game.now_correct = 1;
+            } else {
+              this.game.now_correct = 2;
             }
           },
           click_1() {
             this.game.now_correct = 0;
-            if(this.game.answers[1]==this.game.correct_answer){
-                this.game.now_correct = 1;
-            }else{
-                this.game.now_correct = 2;
+            if (this.game.answers[1] == this.game.correct_answer) {
+              this.game.now_correct = 1;
+            } else {
+              this.game.now_correct = 2;
             }
           },
           click_2() {
             this.game.now_correct = 0;
-            if(this.game.answers[2]==this.game.correct_answer){
-                this.game.now_correct = 1;
-                console.log("correct");
-            }else{
-                this.game.now_correct = 2;
+            if (this.game.answers[2] == this.game.correct_answer) {
+              this.game.now_correct = 1;
+              console.log("correct");
+            } else {
+              this.game.now_correct = 2;
             }
           },
           click_3() {
             this.game.now_correct = false;
-            if(this.game.answers[3]==this.game.correct_answer){
-                this.game.now_correct = 1;
-            }else{
-                this.game.now_correct = 2;
+            if (this.game.answers[3] == this.game.correct_answer) {
+              this.game.now_correct = 1;
+            } else {
+              this.game.now_correct = 2;
             }
           },
-          
         },
-       
-
       });
 
-    const app = new Vue({
-      el: '#app',
-      data: {
-        games: [
-          { 
-            id: 1, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
+      const app = new Vue({
+        el: "#app",
+        data: {
+          games: [
+            {
+              id: 1,
+              question: "依職業安全衛生設施規則規定，金屬鈉屬於下列何者？",
+              answers: ["爆炸性物質", "著火性物質", "易燃液體", "氧化性物質"],
+              correct_answer: "著火性物質",
+              now_correct: false,
+            },
+            {
+              id: 2,
+              question:
+                "依職業安全衛生設施規則規定，建築物工作室之樓地板至天花板淨高應在多少公尺以上？",
+              answers: ["2", "2.1", "2.8", "3"],
+              correct_answer: "2.1",
+              now_correct: false,
+            },
+            {
+              id: 3,
+              question:
+                "依職業安全衛生設施規則規定，機械間或其他設備間之通道不得小於多少公分？",
+              answers: ["60", "75", "80", "90"],
+              correct_answer: "80",
+              now_correct: false,
+            },
+            {
+              id: 4,
+              question:
+                "依職業安全衛生設施規則規定，通道傾斜度原則上應在多少度以下？",
+              answers: ["20", "30", "40", "50"],
+              correct_answer: "30",
+              now_correct: false,
+            },
+            {
+              id: 5,
+              question:
+                "依職業安全衛生設施規則規定，設置之固定梯長超過6公尺時，應每隔多少公尺以下設一平台？",
+              answers: ["6", "7", "8", "9"],
+              correct_answer: "9",
+              now_correct: false,
+            },
+            {
+              id: 6,
+              question:
+                "依職業安全衛生設施規則規定，自高度在幾公尺以上之場所，投下物體有危害勞工之虞時，應設置適當之滑槽及承受設備？",
+              answers: ["2", "3", "4", "5"],
+              correct_answer: "3",
+              now_correct: false,
+            },
+            {
+              id: 7,
+              question:
+                "依職業安全衛生設施規則規定，雇主使勞工於接近高壓電路從事檢查、修理等作業時，如該作業勞工未戴用絕緣用防護具，為防止勞工接觸高壓電路引起感電之危險，對距離勞工身體多少公分以內之高壓電路，應在電路設置絕緣用防護裝備？",
+              answers: ["60", "70", "80", "90"],
+              correct_answer:
+                "依職業安全衛生設施規則規定，充電電路之使用電壓為69千伏特，其接近界限距離為多少公分？",
+              now_correct: false,
+            },
+            {
+              id: 8,
+              question: "",
+              answers: ["20", "30", "50", "60"],
+              correct_answer: "60",
+              now_correct: false,
+            },
+            {
+              id: 9,
+              question:
+                "依職業安全衛生設施規則規定，雇主使勞工從事與動、植物接觸作業，有造成勞工傷害或下列何種情形者，應採取危害預防或隔離設施、提供適當之防衛裝備或個人防護器具？",
+              answers: ["過敏", "感染", "中毒", "心理恐懼"],
+              correct_answer: "感染",
+              now_correct: false,
+            },
+            {
+              id: 10,
+              question:
+                "依職業安全衛生設施規則規定，可採人工照明之作業場所，何者應採用局部照明？",
+              answers: [
+                "鍋爐房",
+                "精細物件儲藏室",
+                "一般辦公場所",
+                "精密儀器組合",
+              ],
+              correct_answer: "精密儀器組合",
+              now_correct: false,
+            },
+            {
+              id: 11,
+              question:
+                "依職業安全衛生設施規則規定，有關一般辦公場所之人工照明，應至少達多少米燭光？",
+              answers: ["50", "100", "200", "300"],
+              correct_answer: "300",
+              now_correct: false,
+            },
+            {
+              id: 12,
+              question:
+                "依職業安全衛生管理辦法規定，事業單位勞工在多少人以上時，雇主應訂定職業安全衛生管理規章？",
+              answers: ["300", "100", "50", "30"],
+              correct_answer: "100",
+              now_correct: false,
+            },
+            {
+              id: 13,
+              question: "",
+              answers: ["", "", "", ""],
+              correct_answer: "",
+              now_correct: false,
+            },
+            {
+              id: 14,
+              question: "",
+              answers: ["", "", "", ""],
+              correct_answer: "",
+              now_correct: false,
+            },
+            {
+              id: 15,
+              question: "",
+              answers: ["", "", "", ""],
+              correct_answer: "",
+              now_correct: false,
+            },
+            {
+              id: 16,
+              question: "",
+              answers: ["", "", "", ""],
+              correct_answer: "",
+              now_correct: false,
+            },
+            {
+              id: 17,
+              question: "",
+              answers: ["", "", "", ""],
+              correct_answer: "",
+              now_correct: false,
+            },
+            {
+              id: 18,
+              question: "",
+              answers: ["", "", "", ""],
+              correct_answer: "",
+              now_correct: false,
+            },
+            {
+              id: 19,
+              question: "",
+              answers: ["", "", "", ""],
+              correct_answer: "",
+              now_correct: false,
+            },
+            {
+              id: 20,
+              question: "",
+              answers: ["", "", "", ""],
+              correct_answer: "",
+              now_correct: false,
+            },
+            {
+              id: 21,
+              question: "",
+              answers: ["", "", "", ""],
+              correct_answer: "",
+              now_correct: false,
+            },
+            {
+              id: 22,
+              question: "",
+              answers: ["", "", "", ""],
+              correct_answer: "",
+              now_correct: false,
+            },
+            {
+              id: 23,
+              question: "",
+              answers: ["", "", "", ""],
+              correct_answer: "",
+              now_correct: false,
+            },
+            {
+              id: 24,
+              question: "",
+              answers: ["", "", "", ""],
+              correct_answer: "",
+              now_correct: false,
+            },
+            {
+              id: 25,
+              question: "",
+              answers: ["", "", "", ""],
+              correct_answer: "",
+              now_correct: false,
+            },
+            {
+              id: 26,
+              question: "",
+              answers: ["", "", "", ""],
+              correct_answer: "",
+              now_correct: false,
+            },
+            {
+              id: 27,
+              question: "",
+              answers: ["", "", "", ""],
+              correct_answer: "",
+              now_correct: false,
+            },
+            {
+              id: 28,
+              question: "",
+              answers: ["", "", "", ""],
+              correct_answer: "",
+              now_correct: false,
+            },
+            {
+              id: 29,
+              question: "",
+              answers: ["", "", "", ""],
+              correct_answer: "",
+              now_correct: false,
+            },
+            {
+              id: 30,
+              question: "",
+              answers: ["", "", "", ""],
+              correct_answer: "",
+              now_correct: false,
+            },
+            {
+              id: 31,
+              question: "",
+              answers: ["", "", "", ""],
+              correct_answer: "",
+              now_correct: false,
+            },
+            {
+              id: 32,
+              question: "",
+              answers: ["", "", "", ""],
+              correct_answer: "",
+              now_correct: false,
+            },
+            {
+              id: 33,
+              question: "",
+              answers: ["", "", "", ""],
+              correct_answer: "",
+              now_correct: false,
+            },
+          ],
         },
-          { 
-            id: 2, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-        },
-          { 
-            id: 3, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          }, 
-          { 
-            id: 4, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 5, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 6, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 7, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 8, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 9, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 10, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 11, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 12, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 13, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 14, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 15, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 16, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 17, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 18, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 19, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 20, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 21, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 22, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 23, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 24, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 25, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 26, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 27, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 28, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 29, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 30, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 31, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 32, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-          { 
-            id: 33, 
-            question: '',
-            answers: [
-                '',
-                '',
-                '',
-                ''
-            ],
-            correct_answer: '',
-            now_correct: false,
-          },
-        ],
-       
-      },
-      
-      
-    });
-  </script>
-</body>
-
+      });
+    </script>
+  </body>
 </html>
