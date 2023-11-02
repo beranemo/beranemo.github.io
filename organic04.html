@@ -2,16 +2,34 @@
 
 <head>
   <title>Organic solvents 4</title>
+
+  <style>
+    .container {
+      display: flex;
+      justify-content: center;
+      border: 2px solid black;
+    }
+
+    .box {
+      width: 700px;
+      border: 2px solid rgb(255, 0, 0);
+   }
+  </style>
+
 </head>
 
 <body>
   <div id="app">
 
-    <game-card 
-    v-for="game in games" 
-    :game-data="game" 
-    :key="game.id"
-    ></game-card>
+    <div class="container">
+      <div class="box">
+        <game-card 
+        v-for="game in games" 
+        :game-data="game" 
+        :key="game.id"
+        ></game-card>
+      </div>
+    </div>
 
   </div>
 
@@ -27,7 +45,7 @@
           }
         },
         template: `
-        <div style="border-radius: .25rem; border: 1px solid #ECECEC; width: 400px; margin: 1rem; padding: 1rem;">
+        <div style="border-radius: .25rem; border: 1px solid #ECECEC; margin: 1rem; padding: 1rem;">
           <h3>{{ game.question }}</h3>
           
           <button @click="click_0" style="display: block; width: 100%; text-align: left" >{{ game.answers[0] }}</button>
@@ -110,7 +128,7 @@
         },
           { 
             id: 3, 
-            question: '依鉛中毒預防規則規定，下列何種鉛作業應設置淋浴及更衣設備，供勞工 使用?',
+            question: '*依鉛中毒預防規則規定，下列何種鉛作業應設置淋浴及更衣設備，供勞工使用?',
             answers: [
                 '軟焊作業',
                 '含鉛裝置內部作業',
@@ -122,7 +140,7 @@
           }, 
           { 
             id: 4, 
-            question: '依鉛中毒預防規則規定，鉛合金是鉛與鉛以外金屬之合金中，鉛佔該合金 重量百分之多少重量以上者?',
+            question: '*依鉛中毒預防規則規定，鉛合金是鉛與鉛以外金屬之合金中，鉛佔該合金重量百分之多少重量以上者?',
             answers: [
                 '1%',
                 '3%',
@@ -134,7 +152,7 @@
           },
           { 
             id: 5, 
-            question: '依職業安全衛生設施規則規定，刺激物、腐蝕性物質或毒性汙染之工作場 所，應每多少人設置一個冷熱清洗設備?',
+            question: '*依職業安全衛生設施規則規定，刺激物、腐蝕性物質或毒性汙染之工作場所，應每多少人設置一個冷熱清洗設備?',
             answers: [
                 '5',
                 '10',
@@ -146,7 +164,7 @@
           },
           { 
             id: 6, 
-            question: '某一單位勞工人數550人，使用符合國家標準CNS15030規定化學品分類， 具有健康危害者，訂有容許暴露標準之化學品，環境監測該化學品濃度低 於 1/2 容許暴露標準，至少每幾年評估一次?',
+            question: '*某一單位勞工人數550人，使用符合國家標準CNS15030規定化學品分類， 具有健康危害者，訂有容許暴露標準之化學品，環境監測該化學品濃度低 於 1/2 容許暴露標準，至少每幾年評估一次?',
             answers: [
                 '3 年',
                 '4 年',
@@ -158,11 +176,11 @@
           },
           { 
             id: 7, 
-            question: '對於運轉中之化學設備或屬設備，為防止因爆炸、火災、洩等造成勞工 之危害，下列敘何者不正確?',
+            question: '*對於運轉中之化學設備或屬設備，為防止因爆炸、火災、洩等造成勞工之危害，下列敘何者不正確?',
             answers: [
                 '確定冷卻、加熱、攪扮及壓縮等置正常操作',
                 '確定將閥或旋塞雙開關或設置盲板',
-                '保持安全閥、緊急遮斷裝置,自動警報置,或其他安全装置於異常狀態時 有效運轉',
+                '保持安全閥、緊急遮斷裝置,自動警報置,或其他安全装置於異常狀態時有效運轉',
                 '保持溫度計、壓力計或其它計測裝置可正常操作'
             ],
             correct_answer: '確定將閥或旋塞雙開關或設置盲板',
@@ -170,7 +188,7 @@
           },
           { 
             id: 8, 
-            question: 'tiO2在勞工作業環境空氣中有害物許濃度中備註欄為加註可呼吸性粉塵， 則表示該物質應測定下列何種濃度?',
+            question: '*tiO2在勞工作業環境空氣中有害物許濃度中備註欄為加註可呼吸性粉塵， 則表示該物質應測定下列何種濃度?',
             answers: [
                 '可呼吸性粉塵',
                 '厭惡性粉塵',
@@ -182,7 +200,7 @@
           },
           { 
             id: 9, 
-            question: '使勞工從事透下列何者定化學物質時，應報備勞動檢查機構?',
+            question: '*使勞工從事透下列何者定化學物質時，應報備勞動檢查機構?',
             answers: [
                 '甲',
                 '乙',
@@ -206,7 +224,7 @@
           },
           { 
             id: 11, 
-            question: '依特定化學物賃危害預防標準規定,石綿屬於下列何種物?',
+            question: '*依特定化學物質危害預防標準規定,石綿屬於下列何種物?',
             answers: [
                 '甲類物質',
                 '乙類物質',
@@ -242,7 +260,7 @@
           },
           { 
             id: 14, 
-            question: '二氧化氮具有下列何種特性?',
+            question: '*二氧化氮具有下列何種特性?',
             answers: [
                 '高溶解性',
                 '至肺纖維化',
@@ -254,7 +272,7 @@
           },
           { 
             id: 15, 
-            question: '有關工作安全分析,下列何者優先?',
+            question: '*有關工作安全分析,下列何者優先?',
             answers: [
                 '將工作分成幾個步驟',
                 '決定要分析的工作',
@@ -290,7 +308,7 @@
           },
           { 
             id: 18, 
-            question: '下列何者不是石錦可能引起的疾病?',
+            question: '*下列何者不是石綿可能引起的疾病?',
             answers: [
                 '肺癌',
                 '麈肺症',
@@ -326,7 +344,7 @@
           },
           { 
             id: 21, 
-            question: '下列何者不屬於單純窒息性氣體?',
+            question: '*下列何者不屬於單純窒息性氣體?',
             answers: [
                 '氮氣',
                 '氦氣',

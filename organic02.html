@@ -2,16 +2,34 @@
 
 <head>
   <title>Organic solvents 2</title>
+
+  <style>
+    .container {
+      display: flex;
+      justify-content: center;
+      border: 2px solid black;
+    }
+
+    .box {
+      width: 700px;
+      border: 2px solid rgb(255, 0, 0);
+   }
+  </style>
+
 </head>
 
 <body>
   <div id="app">
 
-    <game-card 
-    v-for="game in games" 
-    :game-data="game" 
-    :key="game.id"
-    ></game-card>
+    <div class="container">
+      <div class="box">
+        <game-card 
+        v-for="game in games" 
+        :game-data="game" 
+        :key="game.id"
+        ></game-card>
+      </div>
+    </div>
 
   </div>
 
@@ -27,7 +45,7 @@
           }
         },
         template: `
-        <div style="border-radius: .25rem; border: 1px solid #ECECEC; width: 400px; margin: 1rem; padding: 1rem;">
+        <div style="border-radius: .25rem; border: 1px solid #ECECEC; margin: 1rem; padding: 1rem;">
           <h3>{{ game.question }}</h3>
           
           <button @click="click_0" style="display: block; width: 100%; text-align: left" >{{ game.answers[0] }}</button>
@@ -86,7 +104,7 @@
         games: [
           { 
             id: 1, 
-            question: '下列何者會增加暴露瀝青品之嚴重性?',
+            question: '*下列何者會增加暴露瀝青品之嚴重性?',
             answers: [
                 '紅外線',
                 '石綿',
@@ -100,7 +118,7 @@
             id: 2, 
             question: '下列何種因子或疾病不會引起如感冒類似的症狀?',
             answers: [
-                '猛的金屬壎煙',
+                '錳的金屬壎煙',
                 '鐵弗龍高溫加熱後的燻煙',
                 '清水塔工人退伍軍人症',
                 '使用玻璃纖維工人的過敏性皮膚炎'
@@ -122,7 +140,7 @@
           }, 
           { 
             id: 4, 
-            question: '下列何者止確?',
+            question: '下列何者正確?',
             answers: [
                 '兩物間 LD50 小者毒性也較小',
                 '兩物質間 LC50 大者毒性也小',
@@ -134,7 +152,7 @@
           },
           { 
             id: 5, 
-            question: '下列敘述何者錯誤?',
+            question: '*下列敘述何者錯誤?',
             answers: [
                 '清掃囪工人易罹患陰囊癌',
                 '硫酸霧滴長期暴露易致膀胱癌',
@@ -149,7 +167,7 @@
             question: '下列敘述何者錯誤?',
             answers: [
                 '硝化甘油為爆炸性物質',
-                '鋁衯為著火性物質',
+                '鋁粉為著火性物質',
                 '丁烷為可燃性氣體',
                 '二硫化碳為有害物而非危險物'
             ],
@@ -158,7 +176,7 @@
           },
           { 
             id: 7, 
-            question: '有機鉛對人體之危害為下列何者?',
+            question: '*有機鉛對人體之危害為下列何者?',
             answers: [
                 '胃',
                 '神經',
@@ -195,7 +213,7 @@
           },
           { 
             id: 10, 
-            question: '下列何項係預防不安全設備及動作,在安全管理上應先有的作為?',
+            question: '*下列何項係預防不安全設備及動作,在安全管理上應先有的作為?',
             answers: [
                 '職業安全衛生管理計畫',
                 '安全衛生教育訓練',
@@ -219,7 +237,7 @@
           },
           { 
             id: 12, 
-            question: '有關刺激物之敘述下列何者有誤?',
+            question: '*有關刺激物之敘述下列何者有誤?',
             answers: [
                 '刺激物對腸胃可引起嘔吐、噁心或不正常蠕動',
                 '福馬林因溶解度大,易對上呼吸道造成刺激',
@@ -231,7 +249,7 @@
           },
           { 
             id: 13, 
-            question: '依據世界衛生組織之調查,職業病比例最高者為何者?',
+            question: '*依據世界衛生組織之調查,職業病比例最高者為何者?',
             answers: [
                 '皮膚病',
                 '呼吸道疾病',
@@ -255,7 +273,7 @@
           },
           { 
             id: 15, 
-            question: '某一長期執行苯作業勞工於健康檢查發現有貧血現象,為謹慎該公司的職業安全衛生人員建議將該勞工調至非苯作業的工作,此屬何種對策?',
+            question: '*某一長期執行苯作業勞工於健康檢查發現有貧血現象,為謹慎該公司的職業安全衛生人員建議將該勞工調至非苯作業的工作,此屬何種對策?',
             answers: [
                 '抑制，隔離危害物質避免勞工暴露',
                 '作業環改善',
@@ -279,7 +297,7 @@
           },
           { 
             id: 17, 
-            question: '列相同濃度的空氣中有害物,何者較易以觸媒燃燒法測定?',
+            question: '*列相同濃度的空氣中有害物,何者較易以觸媒燃燒法測定?',
             answers: [
                 '一氧化碳',
                 '硫酸',
@@ -303,7 +321,7 @@
           },
           { 
             id: 19, 
-            question: '以活性碳管捕集空氣中有害物,依採樣分析建議方法,當後段所捕集有害物質量相對前段採集質量的比值小於多少時,該樣本為有效樣本?',
+            question: '*以活性碳管捕集空氣中有害物,依採樣分析建議方法,當後段所捕集有害物質量相對前段採集質量的比值小於多少時,該樣本為有效樣本?',
             answers: [
                 '0.1',
                 '0.15',
@@ -315,7 +333,7 @@
           },
           { 
             id: 20, 
-            question: '以檢知管測量空氣中有害物濃度時,如 B 為檢知管的平均呈色讀數值,A 為呈色扭斜最大讀值與較小讀值之差值,則 A 與 B 之比值應在下列何值內,才 屬可靠測定?',
+            question: '*以檢知管測量空氣中有害物濃度時,如 B 為檢知管的平均呈色讀數值,A 為呈色扭斜最大讀值與較小讀值之差值,則 A 與 B 之比值應在下列何值內,才 屬可靠測定?',
             answers: [
                 '0.2',
                 '0.4',
@@ -339,7 +357,7 @@
           },
           { 
             id: 22, 
-            question: '在等溫等壓下,活性碳吸附劑對下列那種化合物的吸附力最差?',
+            question: '*在等溫等壓下,活性碳吸附劑對下列那種化合物的吸附力最差?',
             answers: [
                 '水',
                 '異丙醇',

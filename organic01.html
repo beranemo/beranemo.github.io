@@ -2,16 +2,34 @@
 
 <head>
   <title>Organic solvents 1</title>
+
+  <style>
+    .container {
+      display: flex;
+      justify-content: center;
+      border: 2px solid black;
+    }
+
+    .box {
+      width: 700px;
+      border: 2px solid rgb(255, 0, 0);
+   }
+  </style>
+
 </head>
 
 <body>
   <div id="app">
-
-    <game-card 
-    v-for="game in games" 
-    :game-data="game" 
-    :key="game.id"
-    ></game-card>
+ 
+    <div class="container">
+      <div class="box">
+        <game-card 
+        v-for="game in games" 
+        :game-data="game" 
+        :key="game.id"
+        ></game-card>
+      </div>
+    </div>
 
   </div>
 
@@ -27,7 +45,7 @@
           }
         },
         template: `
-        <div style="border-radius: .25rem; border: 1px solid #ECECEC; width: 400px; margin: 1rem; padding: 1rem;">
+        <div style="border-radius: .25rem; border: 1px solid #ECECEC; margin: 1rem; padding: 1rem;">
           <h3>{{ game.question }}</h3>
           
           <button @click="click_0" style="display: block; width: 100%; text-align: left" >{{ game.answers[0] }}</button>
@@ -114,7 +132,7 @@
             answers: [
                 '勞工無故不接受健康檢查，由雇主處新台幣 3 千元以下罰鍰',
                 '僱用無資格人員操作 3 公噸以上塔式起重機，可處以罰金',
-                '雇主或工作場所負責人對於工作場所有立即發生危險之虞時，經檢查 機構發出停工通知，仍未使勞工停止作業，可處 1 年以下有期徒刑',
+                '雇主或工作場所負責人對於工作場所有立即發生危險之虞時，經檢查機構發出停工通知，仍未使勞工停止作業，可處 1 年以下有期徒刑',
                 '事業單位發生死亡災害未向勞動檢查機構通報，由主管機關處罰鍰'
             ],
             correct_answer: '雇主或工作場所負責人對於工作場所有立即發生危險之虞時，經檢查 機構發出停工通知，仍未使勞工停止作業，可處 1 年以下有期徒刑',
@@ -126,10 +144,10 @@
             answers: [
                 '粉塵作業經歷檢查',
                 '胸部臨床檢查',
-                '神經、精神及心臟血管系統 之物理檢查',
+                '神經、精神及心臟血管系統之物理檢查',
                 '胸部 X 光(大片)攝影檢查'
             ],
-            correct_answer: '神經、精神及心臟血管系統 之物理檢查',
+            correct_answer: '神經、精神及心臟血管系統之物理檢查',
             now_correct: false,
           },
           { 
