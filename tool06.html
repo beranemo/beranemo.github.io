@@ -72,7 +72,7 @@
             var difference = day1 - day2;
             days = difference / (1000 * 3600 * 24); // 相差幾天
 
-            if (days < 180) {
+            if (days > 0 && days < 180) {
                 return true;
             } else {
                 return false;
