@@ -29,6 +29,7 @@
             <button type="button" class="btn btn-primary" onclick="click_button_01()">半年內即將到期</button>
             <button type="button" class="btn btn-success" onclick="click_button_02()">一年內即將到期</button>
             <button type="button" class="btn btn-info" onClick="window.location.reload();">所有資料</button>
+            <button type="button" class="btn btn-danger" onclick="click_button_03()">已到期</button>
 
         
 
@@ -68,7 +69,7 @@
             var day1 = new Date(table.row(value).data()[5]); // 政府資料後端的日期
             var day2 = new Date(today_string);
 
-            var difference = Math.abs(day1 - day2);
+            var difference = day1 - day2;
             days = difference / (1000 * 3600 * 24); // 相差幾天
 
             if (days < 180) {
@@ -108,10 +109,10 @@
             var day1 = new Date(table.row(value).data()[5]); // 政府資料後端的日期
             var day2 = new Date(today_string);
 
-            var difference = Math.abs(day1 - day2);
+            var difference = day1 - day2;
             days = difference / (1000 * 3600 * 24); // 相差幾天
 
-            if (days < 360) {
+            if (days > 0 && days < 360) {
                 return true;
             } else {
                 return false;
@@ -124,6 +125,47 @@
         table.rows.add(rowData).draw();
     }
 
+    function license_has_expired() {
+
+
+        var table = $('#example').DataTable();
+
+        var today = new Date();
+        var today_year = today.getFullYear();
+
+        var today_month = today.getMonth() + 1;
+        if (today_month < 10) {
+            today_month = "0" + today_month;
+        }
+
+        var today_date = today.getDate();
+        if (today_date < 10) {
+            today_date = "0" + today_date;
+        }
+
+        var today_string = today_year + "-" + today_month + "-" + today_date;
+        var indexes = table.rows().indexes().filter(function (value, index) {
+            var day1 = new Date(table.row(value).data()[5]); // 政府資料後端的日期
+            var day2 = new Date(today_string);
+
+            var difference = day1 - day2;
+            days = difference / (1000 * 3600 * 24); // 相差幾天
+
+            if (days < 0 ) {
+                return true;
+            } else {
+                return false;
+            }
+
+        });
+
+        var rowData = table.rows(indexes).data().toArray();
+        table.clear().draw(); // 清空, 重劃
+        table.rows.add(rowData).draw();
+
+    }
+
+
 
 
     function click_button_01() {
@@ -135,6 +177,12 @@
     function click_button_02() {
         $('#example').DataTable().ajax.reload(function () {
             myFunction_360();
+        });
+    }
+
+    function click_button_03() {
+        $('#example').DataTable().ajax.reload(function () {
+            license_has_expired();
         });
     }
 
