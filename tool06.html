@@ -20,25 +20,19 @@
     </style>
 </head>
 
-<body>
-    <div class="container">
-        <h2 class="text-center mt-4 mb-4">許可證清單</h2>
-
-
+    <body>
+        <div class="container">
+            <h2 class="text-center mt-4 mb-4">許可證清單</h2>
+            
+                <button type="button" class="btn btn-primary" onclick="click_button_01()">半年內即將到期</button>
+                <button type="button" class="btn btn-success" onclick="click_button_02()">一年內即將到期</button>
+                <button type="button" class="btn btn-info" onClick="window.location.reload();">所有資料</button>
+                <button type="button" class="btn btn-danger" onclick="click_button_03()">已到期</button>
         
-            <button type="button" class="btn btn-primary" onclick="click_button_01()">半年內即將到期</button>
-            <button type="button" class="btn btn-success" onclick="click_button_02()">一年內即將到期</button>
-            <button type="button" class="btn btn-info" onClick="window.location.reload();">所有資料</button>
-            <button type="button" class="btn btn-danger" onclick="click_button_03()">已到期</button>
+            <table id="example" width="100%" class="table table-striped"></table>
 
-        
-
-
-        <table id="example" width="100%" class="table table-striped"></table>
-
-
-    </div>
-</body>
+        </div>
+    </body>
 
 </html>
 
@@ -47,7 +41,7 @@
 
 
 
-    function myFunction_180() {
+    function myFunction_days(numDays) {
 
         var table = $('#example').DataTable();
         var today = new Date();
@@ -72,7 +66,7 @@
             var difference = day1 - day2;
             days = difference / (1000 * 3600 * 24); // 相差幾天
 
-            if (days > 0 && days < 180) {
+            if (days > 0 && days < numDays) {
                 return true;
             } else {
                 return false;
@@ -112,7 +106,7 @@
             var difference = day1 - day2;
             days = difference / (1000 * 3600 * 24); // 相差幾天
 
-            if (days > 0 && days < 360) {
+            if (days > 0 && days < numDays) {
                 return true;
             } else {
                 return false;
@@ -170,13 +164,13 @@
 
     function click_button_01() {
         $('#example').DataTable().ajax.reload(function () {
-            myFunction_180();
+            myFunction_days(180);
         });
     }
 
     function click_button_02() {
         $('#example').DataTable().ajax.reload(function () {
-            myFunction_360();
+            myFunction_days(360);
         });
     }
 
@@ -246,9 +240,5 @@
     $(document).ready(function () {
         init();
     });
-
-
-
-
 
 </script>
