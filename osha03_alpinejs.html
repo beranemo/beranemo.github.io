@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/alpinejs" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container mx-auto mt-6 max-w-lg">
+    <h1 class="text-5xl mb-4"></h1>
+
+    <!-- 在此輸入想要測試的內容 -->
+    <div x-data="{ items: [] }"
+         x-init="items = await (await fetch('https://www.lian6981929.com.tw/osha03_alpinejs.json')).json()">
+
+      <template x-for="item in items">
+        <div class="rounded overflow-hidden shadow-lg bg-green-200 mb-4">
+          <div class="px-6 py-4 ">
+            <div x-text="item.question" class="mb-1"></div>
+
+            <template x-for="ans in item.answers">
+
+              <button @click="
+              item.now_correct = 0;
+              if (ans == item.correct_answer) {
+                item.now_correct = 1;
+              } else {
+                item.now_correct = 2;
+              }
+            
+              " class="block w-full rounded-lg border px-2 py-1 mb-1 text-sm bg-gray-100 hover:bg-gray-200 text-left"
+                x-text="ans" x-effect="console.log(item.now_correct)"></button>
+
+            </template>
+            <span x-show="item.now_correct==0">答案</span>
+            <span x-show="item.now_correct==1" style="color:green;">正確</span>
+            <span x-show="item.now_correct==2">Oh no 😢. 正確答案是:</span>
+            <span x-show="item.now_correct==2" x-text="item.correct_answer"></span>
+          </div>
+        </div>
+      </template>
+
+
+    </div>
+
+  </div>
+ 
+</body>
+
+</html>
