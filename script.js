@@ -82,7 +82,7 @@ const displayTasks = () => {
     });
   });
 
-  //Delete Tasks
+  // Delete Tasks
   deleteTasks = document.getElementsByClassName("delete");
   Array.from(deleteTasks).forEach((element, index) => {
     element.addEventListener("click", (e) => {
